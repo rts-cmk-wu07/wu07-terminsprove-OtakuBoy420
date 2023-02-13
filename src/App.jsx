@@ -2,7 +2,7 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p className="text-red-500">
+        <p className="text-lg text-gray">
           Edit <code>src/App.jsx</code> and save to reload.
         </p>
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
