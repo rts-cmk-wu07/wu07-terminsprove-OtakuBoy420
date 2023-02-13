@@ -42,6 +42,8 @@ Minimal Viable Product
 
 ## Framework: React
 
+React is a JavaScript library for building user interfaces. I chose to use React because it is the most popular framework for building web apps and it is the one i have the most experience with, it also has the largest variety of libraries, tools and community support out of all js frameworks.
+
 <br>
 
 ## Libraries:
