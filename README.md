@@ -18,24 +18,23 @@ Minimal Viable Product
 - User can see a list of classes
 - User can join and leave a class
 - If user isn't logged in, they can't see the schedule or join a class
-- User can navigate trough the app
-- The styling should look somewhat like the design given
 
 ## Should have
 
 - User can see a schedule with all the classes they are attending
 - User can view details about a class by pressing it
 - Search for classes and trainers
-- The styling should look close to the design given
+- User can navigate trough the app
+- The styling should look somewhat like the design given
 
 ## Nice to have
 
 - Design and animations should make the app feel alive and fun to use
 - Welcome screen
 - User can rate a class from 1-5
-- The app should look exactly like the design given
 - Animated routes
 - Triangle icon in header filter by rating
+- The app should look either exactly like the design given or really close
 
 <br>
 
