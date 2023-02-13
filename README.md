@@ -35,6 +35,7 @@ Minimal Viable Product
 - User can rate a class from 1-5
 - The app should look exactly like the design given
 - Animated routes
+- Triangle icon in header filter by rating
 
 <br>
 
