@@ -1,15 +1,14 @@
-import { useContext, useState } from "react"
-import IsAuthenticatedContext from "../contexts/isAuthenticatedContext"
-import storeToken from "../functions/storeToken"
+import { useContext, useState } from "react";
+import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
 
 export default function useLogin() {
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const { setIsAuthenticated } = useContext(IsAuthenticatedContext)
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { setIsAuthenticated } = useContext(IsAuthenticatedContext);
   const handleLogin = async (username, password) => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const response = await fetch("http://10.160.205.155:8080/auth/token", {
+      const response = await fetch(`${import.meta.env.VITE_AUTH_URI}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,20 +17,24 @@ export default function useLogin() {
           username,
           password,
         }),
-      })
-      const data = await response.json()
-      if (data.error) {
-        setErrorMessage(data.error)
+      });
+      if (response.ok) {
+        const data = await response.json();
+
+        document.cookie = `token=${data.token};path=/;`;
+        document.cookie = `userId=${data.userId};path=/;`;
+        document.cookie = `validUntil=${data.validUntil};path=/;`;
+        setIsAuthenticated(true);
       } else {
-        storeToken(data.token)
-        setIsAuthenticated(true)
+        setErrorMessage(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later");
       }
     } catch (error) {
-      console.log(error)
+      console.error(error);
+      setErrorMessage("Something went wrong, please try again later");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  return { handleLogin, errorMessage, isLoading }
+  return { handleLogin, errorMessage, isLoading };
 }

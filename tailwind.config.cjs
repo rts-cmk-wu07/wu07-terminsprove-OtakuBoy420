@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors")
-const defaultTheme = require("tailwindcss/defaultTheme")
+const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -10,6 +10,8 @@ module.exports = {
         gray: "#E4E4E4",
         white: colors.white,
         black: colors.black,
+        inputBg: "#f1f0f5",
+        inputText: "#acacac",
       },
       fontFamily: {
         sans: ["Arial", ...defaultTheme.fontFamily.sans],
@@ -24,13 +26,13 @@ module.exports = {
   },
   plugins: [
     function ({ addVariant }) {
-      addVariant("child", "& > *")
-      addVariant("child-hover", "& > *:hover")
+      addVariant("child", "& > *");
+      addVariant("child-hover", "& > *:hover");
     },
     function ({ addBase }) {
       addBase({
         html: { fontSize: "22px" },
-      })
+      });
     },
   ],
-}
+};

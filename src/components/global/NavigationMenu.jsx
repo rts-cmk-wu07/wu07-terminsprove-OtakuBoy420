@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import LoginForm from "../LoginForm";
+import LoginForm from "./LoginForm";
 import { navItems } from "../../constants";
+import { useContext } from "react";
+import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import LogOutButton from "../buttons/LogOutButton";
 
 export default function NavigationMenu() {
+  const { isAuthenticated } = useContext(IsAuthenticatedContext);
   return (
     <motion.nav
       initial={{ y: "-100%" }}
@@ -17,7 +21,7 @@ export default function NavigationMenu() {
             {item.name}
           </NavLink>
         ))}
-        <LoginForm />
+        {isAuthenticated ? <LogOutButton /> : <LoginForm />}
       </ul>
     </motion.nav>
   );
