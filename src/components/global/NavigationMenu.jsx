@@ -1,6 +1,7 @@
-import { motion } from "framer-motion"
-import { NavLink } from "react-router-dom"
-import LoginForm from "../LoginForm"
+import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+import LoginForm from "../LoginForm";
+import { navItems } from "../../constants";
 
 export default function NavigationMenu() {
   return (
@@ -11,20 +12,13 @@ export default function NavigationMenu() {
       transition={{ duration: 0.75, type: "tween" }}
       className="absolute top-0 left-0 z-10 h-full w-full bg-white">
       <ul className="flex h-full flex-col items-center gap-4 px-4 py-24">
-        <NavLink to="" className={({ isActive }) => (isActive ? "text-lg underline underline-offset-4" : "text-lg")} exact>
-          Home
-        </NavLink>
-
-        <NavLink to="about" className={({ isActive }) => (isActive ? "text-lg underline underline-offset-4" : "text-lg")}>
-          Search
-        </NavLink>
-
-        <NavLink to="contact" className={({ isActive }) => (isActive ? "text-lg underline underline-offset-4" : "text-lg")}>
-          My Schedule
-        </NavLink>
-
+        {navItems.map((item, index) => (
+          <NavLink key={index} to={item.path} className={({ isActive }) => (isActive ? "text-lg underline underline-offset-4" : "text-lg")}>
+            {item.name}
+          </NavLink>
+        ))}
         <LoginForm />
       </ul>
     </motion.nav>
-  )
+  );
 }
