@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import NotFound from "../../pages/NotFound";
 import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
 import getCookie from "../../functions/getCookie";
+import useAxios from "../../hooks/useAxios";
 export default function Router() {
   const location = useLocation();
   const [navigationTitle, setNavigationTitle] = useState("Home");

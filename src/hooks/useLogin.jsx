@@ -21,9 +21,9 @@ export default function useLogin() {
       if (response.ok) {
         const data = await response.json();
 
-        document.cookie = `token=${data.token};path=/;`;
-        document.cookie = `userId=${data.userId};path=/;`;
-        document.cookie = `validUntil=${data.validUntil};path=/;`;
+        document.cookie = `token=${data.token};path=/;SameSite=None;Secure;`;
+        document.cookie = `userId=${data.userId};path=/;SameSite=None;Secure;`;
+        document.cookie = `validUntil=${data.validUntil};path=/;SameSite=None;Secure;`;
         setIsAuthenticated(true);
       } else {
         setErrorMessage(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later");
