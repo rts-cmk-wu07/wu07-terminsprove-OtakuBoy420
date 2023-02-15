@@ -7,11 +7,13 @@ import { useState, useEffect } from "react";
 import NotFound from "../../pages/NotFound";
 import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
 import getCookie from "../../functions/getCookie";
-import useAxios from "../../hooks/useAxios";
+import Class from "../../pages/Class";
+import { AnimatePresence } from "framer-motion";
 export default function Router() {
   const location = useLocation();
   const [navigationTitle, setNavigationTitle] = useState("Home");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
     const token = getCookie("token");
     const expirationTime = getCookie("validUntil");
@@ -36,12 +38,15 @@ export default function Router() {
           navigationTitle,
           setNavigationTitle,
         }}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+        <AnimatePresence mode="wait" initial={false}>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/class/:id" element={<Class />} />
+            </Route>
+          </Routes>
+        </AnimatePresence>
       </NavigationTitleContext.Provider>
     </IsAuthenticatedContext.Provider>
   );
