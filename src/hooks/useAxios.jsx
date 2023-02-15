@@ -1,46 +1,45 @@
-import axios from "axios"
-import { useEffect, useState, useContext } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function useAxios(url, method = "get", body = null) {
-  const [data, setData] = useState({})
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  // Get token from context
-  // const { accessToken, setAccessToken } = useContext(TokenContext);
+export default function useAxios(url, needsAuth = false) {
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  // Get token from cookie
+
+  const token = document?.cookie?.split("=")[1]?.split(";")[0];
+
   useEffect(() => {
-    if (!url) return
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
 
-    const request = method === "get" ? axios.get(url) : method === "post" ? axios.post(url, body) : method === "put" ? axios.put(url, body) : null
-
-    if (!request) return
-
-    request.then((response) => {
+    axios.get(url).then((response) => {
       if (response.status >= 200 && response.status < 300) {
-        setData(response.data)
-        setLoading(false)
+        setData(response.data);
+        setLoading(false);
       } else {
-        setError(response.status)
+        setError(response.status);
       }
-    })
-  }, [url, method, body])
+    });
+  }, [url]);
 
   const refreshData = () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
 
-    const request = method === "get" ? axios.get(url) : method === "post" ? axios.post(url, body) : method === "put" ? axios.put(url, body) : null
+    if (!axios.get(url)) return;
 
-    if (!request) return
-
-    request.then((response) => {
+    axios.get(url).then((response) => {
       if (response.status >= 200 && response.status < 300) {
-        setData(response.data)
-        setLoading(false)
+        setData(response.data);
+        setLoading(false);
       } else {
-        setError(response.status)
+        setError(response.status);
       }
-    })
-  }
+    });
+  };
 
-  return { data, loading, error, refreshData }
+  return { data, loading, error, refreshData };
 }

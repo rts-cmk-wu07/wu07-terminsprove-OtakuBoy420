@@ -1,17 +1,18 @@
 import { Route, Routes } from "react-router";
 import NavigationTitleContext from "../../contexts/NavigationTitleContext";
 import Layout from "../../Layout";
-import Home from "../../pages/Home";
+import HomePage from "../../pages/HomePage";
 import { useLocation } from "react-router";
 import { useState, useEffect } from "react";
-import NotFound from "../../pages/NotFound";
+import NotFoundPage from "../../pages/NotFoundPage";
 import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
 import getCookie from "../../functions/getCookie";
-import Class from "../../pages/Class";
+import ClassDetailsPage from "../../pages/ClassDetailsPage";
 import { AnimatePresence } from "framer-motion";
+import CustomToastContainer from "../global/CustomNotification";
 export default function Router() {
   const location = useLocation();
-  const [navigationTitle, setNavigationTitle] = useState("Home");
+  const [navigationTitle, setNavigationTitle] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -30,7 +31,6 @@ export default function Router() {
       }
     }
   }, []);
-
   return (
     <IsAuthenticatedContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       <NavigationTitleContext.Provider
@@ -39,11 +39,12 @@ export default function Router() {
           setNavigationTitle,
         }}>
         <AnimatePresence mode="wait" initial={false}>
+          <CustomToastContainer />
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/class/:id" element={<Class />} />
+              <Route index element={<HomePage />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/class/:id" element={<ClassDetailsPage />} />
             </Route>
           </Routes>
         </AnimatePresence>

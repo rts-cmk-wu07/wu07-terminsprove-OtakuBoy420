@@ -22,6 +22,9 @@ module.exports = {
         xl: "50px",
         "2xl": "62px",
       },
+      boxShadow: {
+        primary: "0 0px 12px 0px #F4A88E",
+      },
     },
   },
   plugins: [
