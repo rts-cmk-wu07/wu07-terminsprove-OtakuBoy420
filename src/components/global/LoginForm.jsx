@@ -1,9 +1,9 @@
 import Loader from "./Loader";
 import { HiUser } from "@react-icons/all-files/hi/HiUser";
 import { HiLockClosed } from "@react-icons/all-files/hi/HiLockClosed";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import { toast } from "react-toastify";
 export default function LoginForm() {
   const { handleLogin, errorMessage, isLoading } = useLogin();
   const [username, setUsername] = useState("");
@@ -14,10 +14,13 @@ export default function LoginForm() {
   function checkForEmptyFields() {
     // trim removes whitespace
     if (username.trim() === "" && password.trim() === "") {
+      toast.error("Please enter a username and password");
       setValidationError("Please enter a username and password");
     } else if (username.trim() === "") {
+      toast.error("Please enter a username");
       setValidationError("Please enter a username");
     } else if (password.trim() === "") {
+      toast.error("Please enter a password");
       setValidationError("Please enter a password");
     } else {
       setValidationError("");

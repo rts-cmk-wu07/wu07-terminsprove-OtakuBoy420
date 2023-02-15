@@ -1,5 +1,4 @@
 import Loader from "../global/Loader";
-import { useState, useEffect } from "react";
 import useAxios from "../../hooks/useAxios";
 import ClassSliderItem from "./ClassSliderItem";
 export default function ClassSlider() {

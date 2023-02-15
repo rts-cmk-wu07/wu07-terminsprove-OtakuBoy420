@@ -1,7 +1,11 @@
 export default function Loader({ size }) {
   return (
     <div
-      className={`${size ? `h-${size} w-${size} border-${size > 20 ? "4" : "2"}` : "h-5 w-5 border-2"} m-auto animate-spin rounded-full border-solid border-inputText border-t-transparent`}
+      className={
+        size === "lg"
+          ? "m-auto h-20 w-20 animate-spin rounded-full border-4 border-solid border-inputText border-t-transparent"
+          : "m-auto h-5 w-5 animate-spin rounded-full border-2 border-solid border-inputText border-t-transparent"
+      }
     />
   );
 }
