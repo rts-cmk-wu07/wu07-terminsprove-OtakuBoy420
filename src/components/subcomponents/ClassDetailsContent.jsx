@@ -1,3 +1,4 @@
+import Trainer from "./Trainer";
 import { AnimatePresence, motion } from "framer-motion";
 import { slideIn, textVariant } from "../../utils/motion";
 export default function ClassDetailsContent({ classData, assetsData }) {
@@ -21,10 +22,7 @@ export default function ClassDetailsContent({ classData, assetsData }) {
         <motion.h3 variants={textVariant(0.7)} className="mt-4 text-lg">
           Trainer
         </motion.h3>
-        <motion.div variants={slideIn("up", "spring", 0.7, 1.5)} className="flex ">
-          <img className="w-14 rounded-lg" src={assetsData[classData?.trainer?.assetId]?.url} />
-          <p className="ml-2 p-1">{classData?.trainer?.trainerName}</p>
-        </motion.div>
+        <Trainer assetsData={assetsData} classData={classData} delay="0.7" />
       </motion.article>
     </AnimatePresence>
   );

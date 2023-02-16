@@ -15,14 +15,6 @@ export default function ClassDetailsPage() {
   useEffect(() => {
     setNavigationTitle("ClassDetails");
   }, []);
-
-  if (classError || assetsError) {
-    return (
-      <div className="mt-6 flex h-full flex-col justify-center">
-        <p className="text-lg">{classError?.message || assetsError?.message ? assetsError?.message || classError?.message : "Error fetching data"}</p>
-      </div>
-    );
-  }
   return (
     <>
       {classLoading && assetsLoading ? (

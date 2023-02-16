@@ -11,7 +11,7 @@ export default function Navigation() {
   const navigate = useNavigate();
   return (
     <>
-      {navigationTitle === "ClassDetails" || navigationTitle === "Schedule" ? (
+      {navigationTitle === "ClassDetails" || navigationTitle === "Schedule" || navigationTitle === "Search" ? (
         <>
           <header className="absolute left-0 top-4 z-30 flex w-full px-4">
             <nav className="flex w-full items-center justify-between">
@@ -26,14 +26,14 @@ export default function Navigation() {
               </div>
               {!isMenuOpen ? (
                 <HiMenuAlt3
-                  className="z-50 cursor-pointer text-[42px] text-gray"
+                  className="z-[99999] cursor-pointer text-[42px] text-gray"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
                 />
               ) : (
                 <HiX
-                  className="z-[9999] cursor-pointer text-[42px] text-gray"
+                  className="z-[99999] cursor-pointer text-[42px] text-gray"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}

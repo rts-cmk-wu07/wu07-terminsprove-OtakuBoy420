@@ -21,7 +21,7 @@ export default function ScheduleClassList() {
           <button
             className="mt-4 w-full rounded-md border-2 px-4 py-2 text-black"
             onClick={() => {
-              navigate("/");
+              navigate("/home");
             }}>
             To home
           </button>

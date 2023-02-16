@@ -1,13 +1,14 @@
 import Loader from "../global/Loader";
-import useAxios from "../../hooks/useAxios";
 import ClassSliderItem from "./ClassSliderItem";
 import { motion } from "framer-motion";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
-export default function ClassSlider() {
-  const { data, error, loading } = useAxios(`${import.meta.env.VITE_API_URI}/classes`);
+export default function ClassSlider({ data, loading, error, pl, heading, mt }) {
   return (
-    <article className="mt-6 max-w-fit pl-4">
-      <h3 className="mb-2 text-lg">Classes for you</h3>
+    <article
+      className={`max-w-fit ${pl ? "pl-4" : ""}
+    ${mt ? "mt-6" : ""}
+    `}>
+      {heading && <h3 className="mb-4 text-lg">{heading}</h3>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -15,12 +16,20 @@ export default function ClassSlider() {
           <HiOutlineExclamationCircle className="text-red-500" />
           <p className="text-base text-red-500"> {error?.message ? error?.message : "Error fetching data"}</p>
         </div>
-      ) : (
-        <motion.ul initial="hidden" whileInView="show" className="flex w-full gap-6 overflow-x-scroll">
+      ) : data.length > 0 ? (
+        <motion.ul initial="hidden" animate="show" className="flex w-full gap-6 overflow-y-hidden overflow-x-scroll">
           {data?.map((item, index) => (
             <ClassSliderItem key={item.id} index={index} item={item} />
           ))}
         </motion.ul>
+      ) : (
+        <div className="my-6 flex flex-col items-center gap-1 text-center">
+          <HiOutlineExclamationCircle className="text-red-500" />
+          <div className="text-lg">
+            <p className="text-red-500">No classes found.</p>
+            <p>Try searching for something else</p>
+          </div>
+        </div>
       )}
     </article>
   );

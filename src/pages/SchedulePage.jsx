@@ -8,7 +8,7 @@ export default function SchedulePage() {
     setNavigationTitle("Schedule");
   }, []);
   return (
-    <section className="p-4 pt-12">
+    <section className="mt-8 p-4">
       <h1 className="text-xl">My Schedule</h1>
       <ScheduleClassList />
     </section>

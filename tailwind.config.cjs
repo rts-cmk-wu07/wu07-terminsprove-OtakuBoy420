@@ -25,6 +25,12 @@ module.exports = {
       boxShadow: {
         primary: "0 0px 12px 0px #F4A88E",
       },
+      backgroundImage: {
+        welcome: "url('./src/assets/images/welcome-1.jpg')",
+      },
+      backgroundPosition: {
+        centered: "60% center",
+      },
     },
   },
   plugins: [
