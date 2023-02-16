@@ -13,8 +13,9 @@ export default function CustomToastContainer() {
         fontWeight: "500",
         borderRadius: "15px",
         paddingInline: "1rem",
-        marginBottom: "2rem",
         marginInline: "0.5rem",
+        marginTop: "2.75rem",
+        marginBottom: "1rem",
       }}
       hideProgressBar={false}
       newestOnTop

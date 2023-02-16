@@ -4,6 +4,8 @@ import WhiteButton from "../buttons/WhiteButton";
 import axios from "axios";
 import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import { textVariant } from "../../utils/motion";
 export default function ClassDetailsHero({ classData, id }) {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -24,7 +26,9 @@ export default function ClassDetailsHero({ classData, id }) {
       {!imageLoaded && <ImagePlaceholder size="[60vh]" />}
       <img onLoad={handleImageLoad} className={imageLoaded ? "absolute top-0 h-[60vh] w-full object-cover" : "hidden"} src={classData?.asset?.url} />
       <div className="absolute left-0 bottom-4 flex w-full items-end justify-between gap-1">
-        <h1 className="text-shadow w-[65%] pl-4 text-xl leading-10 text-white">{classData?.className}</h1>
+        <motion.h1 initial="hidden" whileInView="show" variants={textVariant(0.1)} className="text-shadow w-[65%] pl-4 text-xl leading-10 text-white">
+          {classData?.className}
+        </motion.h1>
         {isAuthenticated ? (
           <WhiteButton
             title={isSignedUp ? "Leave" : "Sign Up"}
@@ -37,7 +41,9 @@ export default function ClassDetailsHero({ classData, id }) {
                     console.log(response);
                   });
                 setIsSignedUp(false);
-                toast.success("You have successfully left this class!");
+                toast.success("You have successfully left this class!", {
+                  className: "toast-bottom-message",
+                });
                 return;
               }
               axios
@@ -46,7 +52,9 @@ export default function ClassDetailsHero({ classData, id }) {
                   console.log(response);
                 });
               setIsSignedUp(true);
-              toast.success("You have successfully signed up for this class!");
+              toast.success("You have successfully signed up for this class!", {
+                className: "toast-bottom-message",
+              });
             }}
           />
         ) : null}

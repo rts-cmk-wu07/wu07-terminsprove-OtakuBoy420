@@ -7,7 +7,7 @@ export default function useLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const { setIsAuthenticated } = useContext(IsAuthenticatedContext);
 
-  const handleLogin = async (username, password) => {
+  const handleLogin = async (username, password, setIsMenuOpen) => {
     setIsLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_AUTH_URI}`, {
@@ -27,13 +27,18 @@ export default function useLogin() {
         document.cookie = `userId=${data.userId};path=/;SameSite=None;Secure;`;
         document.cookie = `validUntil=${data.validUntil};path=/;SameSite=None;Secure;`;
         setIsAuthenticated(true);
-        toast.success("You have successfully logged in!");
+        toast.success("You have successfully logged in!", {
+          position: "top-center",
+          className: "toast-top-message",
+        });
+        setIsMenuOpen(false);
       } else {
         setErrorMessage(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later");
-        toast.error(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later");
+        toast.error(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later", {
+          position: "top-center",
+        });
       }
     } catch (error) {
-      console.error(error);
       setErrorMessage("Something went wrong, please try again later");
     } finally {
       setIsLoading(false);

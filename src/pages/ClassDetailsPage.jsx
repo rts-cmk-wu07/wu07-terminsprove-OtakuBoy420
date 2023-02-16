@@ -5,6 +5,7 @@ import Loader from "../components/global/Loader";
 import NavigationTitleContext from "../contexts/NavigationTitleContext";
 import useAxios from "../hooks/useAxios";
 import ClassDetailsContent from "../components/subcomponents/ClassDetailsContent";
+import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
 
 export default function ClassDetailsPage() {
   const { id } = useParams();
@@ -15,10 +16,22 @@ export default function ClassDetailsPage() {
     setNavigationTitle("ClassDetails");
   }, []);
 
+  if (classError || assetsError) {
+    return (
+      <div className="mt-6 flex h-full flex-col justify-center">
+        <p className="text-lg">{classError?.message || assetsError?.message ? assetsError?.message || classError?.message : "Error fetching data"}</p>
+      </div>
+    );
+  }
   return (
     <>
       {classLoading && assetsLoading ? (
         <Loader size="lg" />
+      ) : classError || assetsError ? (
+        <div className="flex items-center gap-1">
+          <HiOutlineExclamationCircle className="text-red-500" />
+          <p className="text-base text-red-500"> {classError?.message || assetsError?.message ? assetsError?.message || classError?.message : "Error fetching data"}</p>
+        </div>
       ) : (
         <section>
           <ClassDetailsHero classData={classData} id={id} />

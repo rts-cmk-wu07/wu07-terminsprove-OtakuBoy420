@@ -11,19 +11,38 @@ export default function Navigation() {
   const navigate = useNavigate();
   return (
     <>
-      {navigationTitle === "ClassDetails" ? (
-        <header className="absolute left-4 top-4 z-40">
-          <nav className="">
-            <div
-              className="text-shadow flex cursor-pointer items-center gap-1"
-              onClick={() => {
-                navigate(-1);
-              }}>
-              <IoTriangleSharp className="-rotate-90 text-base text-primary" />
-              <p className="text-sm text-primary">Back</p>
-            </div>
-          </nav>
-        </header>
+      {navigationTitle === "ClassDetails" || navigationTitle === "Schedule" ? (
+        <>
+          <header className="absolute left-0 top-4 z-30 flex w-full px-4">
+            <nav className="flex w-full items-center justify-between">
+              <div
+                className="text-shadow z-10 flex cursor-pointer items-center gap-1"
+                onClick={() => {
+                  navigate(-1);
+                  setIsMenuOpen(false);
+                }}>
+                <IoTriangleSharp className="-rotate-90 text-base text-primary" />
+                <p className="text-sm text-primary">Back</p>
+              </div>
+              {!isMenuOpen ? (
+                <HiMenuAlt3
+                  className="z-50 cursor-pointer text-[42px] text-gray"
+                  onClick={() => {
+                    setIsMenuOpen(!isMenuOpen);
+                  }}
+                />
+              ) : (
+                <HiX
+                  className="z-[9999] cursor-pointer text-[42px] text-gray"
+                  onClick={() => {
+                    setIsMenuOpen(!isMenuOpen);
+                  }}
+                />
+              )}
+            </nav>
+          </header>
+          <NavigationMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        </>
       ) : (
         <header className="flex items-center justify-between border-b-2 border-gray bg-white p-4 pb-1">
           <div className="flex w-full items-center justify-between">
@@ -38,7 +57,7 @@ export default function Navigation() {
               />
             ) : (
               <HiX
-                className="z-50 cursor-pointer text-[42px] text-gray"
+                className="z-[999] cursor-pointer text-[42px] text-gray"
                 onClick={() => {
                   setIsMenuOpen(!isMenuOpen);
                 }}

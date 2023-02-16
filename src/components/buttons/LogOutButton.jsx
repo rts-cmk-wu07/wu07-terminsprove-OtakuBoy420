@@ -11,7 +11,10 @@ export default function LogOutButton() {
         document.cookie = "validUntil=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         setIsAuthenticated(false);
-        toast.success("You have successfully logged out!");
+        toast.success("You have successfully logged out!", {
+          position: "top-center",
+          className: "toast-top-message",
+        });
       }}>
       Log out
     </button>
