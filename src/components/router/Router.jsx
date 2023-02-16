@@ -11,6 +11,8 @@ import ClassDetailsPage from "../../pages/ClassDetailsPage";
 import { AnimatePresence } from "framer-motion";
 import CustomToastContainer from "../global/CustomNotification";
 import SchedulePage from "../../pages/SchedulePage";
+import SearchPage from "../../pages/SearchPage";
+import WelcomePage from "../../pages/WelcomePage";
 export default function Router() {
   const location = useLocation();
   const [navigationTitle, setNavigationTitle] = useState("");
@@ -43,10 +45,12 @@ export default function Router() {
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
+              <Route index element={<WelcomePage />} />
+              <Route path="/home" element={<HomePage />} />
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/class/:id" element={<ClassDetailsPage />} />
               <Route path="/schedule" element={<SchedulePage />} />
+              <Route path="/search" element={<SearchPage />} />
             </Route>
           </Routes>
         </AnimatePresence>

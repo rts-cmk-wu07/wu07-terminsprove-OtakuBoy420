@@ -15,18 +15,21 @@ export default function LoginForm({ setIsMenuOpen }) {
     // trim removes whitespace
     if (username.trim() === "" && password.trim() === "") {
       toast.error("Please enter a username and password", {
+        autoClose: 3000,
         position: "top-center",
         className: "toast-top-message",
       });
       setValidationError("Please enter a username and password");
     } else if (username.trim() === "") {
       toast.error("Please enter a username", {
+        autoClose: 3000,
         position: "top-center",
         className: "toast-top-message",
       });
       setValidationError("Please enter a username");
     } else if (password.trim() === "") {
       toast.error("Please enter a password", {
+        autoClose: 3000,
         position: "top-center",
         className: "toast-top-message",
       });
@@ -39,7 +42,7 @@ export default function LoginForm({ setIsMenuOpen }) {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-2">
       <div className="relative w-full">
-        <HiUser className="absolute left-1 translate-y-[35%] text-inputText" />
+        <HiUser className="absolute left-1 top-1/2 -translate-y-1/2 text-inputText" />
 
         <input
           onKeyDown={(e) => {
@@ -58,7 +61,7 @@ export default function LoginForm({ setIsMenuOpen }) {
         />
       </div>
       <div className="relative w-full">
-        <HiLockClosed className="absolute left-1 translate-y-[35%] text-inputText " />
+        <HiLockClosed className="absolute left-1 top-1/2 -translate-y-1/2 text-inputText " />
         <input
           onKeyDown={(e) => {
             if (e.key === "Enter") {

@@ -5,7 +5,7 @@ export default function CustomToastContainer() {
   return (
     <ToastContainer
       position="bottom-center"
-      autoClose={3000}
+      autoClose={1500}
       toastStyle={{
         background: "#fff",
         color: "black",
@@ -14,7 +14,7 @@ export default function CustomToastContainer() {
         borderRadius: "15px",
         paddingInline: "1rem",
         marginInline: "0.5rem",
-        marginTop: "2.75rem",
+        marginTop: "1rem",
         marginBottom: "1rem",
       }}
       hideProgressBar={false}

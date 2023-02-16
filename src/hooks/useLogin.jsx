@@ -35,7 +35,9 @@ export default function useLogin() {
       } else {
         setErrorMessage(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later");
         toast.error(response.status === 401 ? "Invalid username or password" : "Something went wrong, please try again later", {
+          autoClose: 3000,
           position: "top-center",
+          className: "toast-top-message",
         });
       }
     } catch (error) {

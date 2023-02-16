@@ -6,18 +6,17 @@ import ImagePlaceholder from "../global/ImagePlaceholder";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../../utils/motion";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
-import useAxios from "../../hooks/useAxios";
-export default function LandingClassCard() {
+export default function LandingClassCard({ data, loading, error }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
-  const [randomNumber, setRandomNumber] = useState(false);
-  useEffect(() => {
-    setRandomNumber(Math.floor(Math.random() * 4 + 1));
-  }, []);
-  const { data, loading, error } = useAxios(`${import.meta.env.VITE_API_URI}/classes`, { needsId: true, id: randomNumber });
+
+  if (!loading) {
+    console.log(data);
+  }
+
   return (
     <>
       {loading ? (
@@ -31,11 +30,11 @@ export default function LandingClassCard() {
         </div>
       ) : (
         <motion.article initial="hidden" whileInView="show" variants={fadeIn("right", "spring", 0.25, 1)}>
-          <Link to={`/class/${data.id}`} className="relative mx-4 flex h-full flex-col items-center justify-center rounded-2xl">
+          <Link to={`/class/${data[0]?.id}`} className="relative mx-4 flex h-full flex-col items-center justify-center rounded-2xl">
             {!imageLoaded && <ImagePlaceholder size="80" />}
-            <img className={imageLoaded ? "h-80 w-full rounded-2xl object-cover" : "hidden"} src={data?.asset.url} onLoad={handleImageLoad} />
+            <img className={imageLoaded ? "h-80 w-full rounded-2xl object-cover" : "hidden"} src={data[0]?.asset.url} onLoad={handleImageLoad} />
             <motion.h2 variants={textVariant(0.25)} className="text-shadow absolute left-4 bottom-6 w-3/4 text-xl leading-10 text-white">
-              {data?.className}
+              {data[0]?.className}
             </motion.h2>
           </Link>
         </motion.article>
