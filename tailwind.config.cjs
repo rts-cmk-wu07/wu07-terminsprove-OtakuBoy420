@@ -11,7 +11,7 @@ module.exports = {
         white: colors.white,
         black: colors.black,
         inputBg: "#f1f0f5",
-        inputText: "#acacac",
+        inputText: "#777777",
       },
       fontFamily: {
         sans: ["Arial", ...defaultTheme.fontFamily.sans],

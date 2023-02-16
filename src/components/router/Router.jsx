@@ -10,6 +10,7 @@ import getCookie from "../../functions/getCookie";
 import ClassDetailsPage from "../../pages/ClassDetailsPage";
 import { AnimatePresence } from "framer-motion";
 import CustomToastContainer from "../global/CustomNotification";
+import SchedulePage from "../../pages/SchedulePage";
 export default function Router() {
   const location = useLocation();
   const [navigationTitle, setNavigationTitle] = useState("");
@@ -38,13 +39,14 @@ export default function Router() {
           navigationTitle,
           setNavigationTitle,
         }}>
+        <CustomToastContainer top={true} />
         <AnimatePresence mode="wait" initial={false}>
-          <CustomToastContainer />
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/class/:id" element={<ClassDetailsPage />} />
+              <Route path="/schedule" element={<SchedulePage />} />
             </Route>
           </Routes>
         </AnimatePresence>
