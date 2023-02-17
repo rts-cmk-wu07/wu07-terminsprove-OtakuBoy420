@@ -1,8 +1,6 @@
 import ClassDetailsHero from "../components/pagecomponents/ClassDetailsHero";
-import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../components/global/Loader";
-import NavigationTitleContext from "../contexts/NavigationTitleContext";
 import useAxios from "../hooks/useAxios";
 import ClassDetailsContent from "../components/pagecomponents/ClassDetailsContent";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
@@ -24,10 +22,6 @@ export default function ClassDetailsPage() {
     needsId: true,
     id: userId,
   });
-  const { setNavigationTitle } = useContext(NavigationTitleContext);
-  useEffect(() => {
-    setNavigationTitle("ClassDetails");
-  }, []);
   return (
     <>
       {classLoading && assetsLoading && userLoading ? (
