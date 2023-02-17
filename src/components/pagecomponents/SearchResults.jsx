@@ -54,7 +54,7 @@ export default function SearchResults(props) {
           <>
             {filteredTrainers?.length > 0 && (
               <>
-                <h2 className="mt-4 text-lg">Trainers</h2>
+                <h2 className="mb-6 text-lg">Popular Trainers</h2>
                 <ul className="flex flex-col gap-4">
                   {filteredTrainers.map((trainerData) => (
                     <Trainer key={trainerData.id} trainerData={trainerData} />

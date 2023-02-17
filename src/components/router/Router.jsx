@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router";
-import NavigationTitleContext from "../../contexts/NavigationTitleContext";
 import Layout from "../../Layout";
 import HomePage from "../../pages/HomePage";
 import { useLocation } from "react-router";
@@ -15,7 +14,6 @@ import SearchPage from "../../pages/SearchPage";
 import WelcomePage from "../../pages/WelcomePage";
 export default function Router() {
   const location = useLocation();
-  const [navigationTitle, setNavigationTitle] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -36,25 +34,19 @@ export default function Router() {
   }, []);
   return (
     <IsAuthenticatedContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-      <NavigationTitleContext.Provider
-        value={{
-          navigationTitle,
-          setNavigationTitle,
-        }}>
-        <CustomToastContainer top={true} />
-        <AnimatePresence mode="wait" initial={false}>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<WelcomePage />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="*" element={<NotFoundPage />} />
-              <Route path="/class/:id" element={<ClassDetailsPage />} />
-              <Route path="/schedule" element={<SchedulePage />} />
-              <Route path="/search" element={<SearchPage />} />
-            </Route>
-          </Routes>
-        </AnimatePresence>
-      </NavigationTitleContext.Provider>
+      <CustomToastContainer top={true} />
+      <AnimatePresence mode="wait" initial={false}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<WelcomePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/class/:id" element={<ClassDetailsPage />} />
+            <Route path="/schedule" element={<SchedulePage />} />
+            <Route path="/search" element={<SearchPage />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
     </IsAuthenticatedContext.Provider>
   );
 }

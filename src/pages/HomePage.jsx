@@ -1,18 +1,13 @@
-import { useEffect, useContext, useState } from "react";
-import NavigationTitleContext from "../contexts/NavigationTitleContext";
+import { useEffect, useState } from "react";
 import LandingClassCard from "../components/subcomponents/LandingClassCard";
 import ClassSliderList from "../components/subcomponents/ClassSliderList";
 import useAxios from "../hooks/useAxios";
 export default function HomePage() {
-  const { setNavigationTitle } = useContext(NavigationTitleContext);
   const [randomNumber, setRandomNumber] = useState(false);
   useEffect(() => {
     setRandomNumber(Math.floor(Math.random() * 4 + 1));
   }, []);
   const { data, error, loading } = useAxios(`${import.meta.env.VITE_API_URI}/classes`);
-  useEffect(() => {
-    setNavigationTitle("Popular Classes");
-  }, []);
 
   return (
     <section className="py-4">

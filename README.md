@@ -1,14 +1,13 @@
 # Trainer app
 
-## Welcome to my trainer app repository! :)
-
+<font size="6">Welcome to my trainer app repository! :)</font>
 <br />
 
 # Description
 
 This repository is a trainer mobile web-app that uses the [Trainer API](https://github.com/OtakuBoy420/trainer-api) as backend.
-The frontend is deployed with vercel at https://oliver-terminsprove.vercel.app/ and the backend is deployed with render at https://trainer-api-oliver.onrender.com/
-(API in deployment may load for a while)
+The frontend is deployed with vercel at https://oliver-terminsprove.vercel.app and the backend is deployed with render at https://trainer-api-oliver.onrender.com
+(API may load for a while)
 
 # Approach
 

@@ -3,15 +3,9 @@ import { slideIn, textVariant } from "../utils/motion";
 import { AnimatePresence, motion } from "framer-motion";
 import mainImage from "../assets/images/welcome-2.jpg";
 import WhiteButton from "../components/buttons/WhiteButton";
-import { useEffect, useContext } from "react";
-import NavigationTitleContext from "../contexts/NavigationTitleContext";
 
 export default function WelcomePage() {
-  const { setNavigationTitle } = useContext(NavigationTitleContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    setNavigationTitle("Welcome");
-  }, []);
 
   return (
     <AnimatePresence>
