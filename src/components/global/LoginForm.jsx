@@ -53,9 +53,9 @@ export default function LoginForm({ setIsMenuOpen }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           type="text"
-          className={`w-full rounded-lg border-2  ${
-            isUsernameValid ? "border-red-500" : "border-inputText"
-          } bg-inputBg py-1.5 pl-6 text-sm text-inputText placeholder:text-inputText focus:border-black focus:outline-none`}
+          className={`w-full rounded-lg border-2  ${isUsernameValid ? "border-red-500" : "border-inputText"} bg-inputBg py-1.5 pl-6 text-sm text-inputText placeholder:text-inputText ${
+            isUsernameValid ? "focus:border-red-500" : "focus:border-black"
+          } focus:outline-none`}
           placeholder="Username"
           aria-label="Username Field"
         />
@@ -71,9 +71,9 @@ export default function LoginForm({ setIsMenuOpen }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
-          className={`w-full rounded-lg border-2  ${
-            isPasswordValid ? "border-red-500" : "border-inputText"
-          } bg-inputBg py-1.5 pl-6 text-sm text-inputText placeholder:text-inputText focus:border-black focus:outline-none`}
+          className={`w-full rounded-lg border-2  ${isPasswordValid ? "border-red-500" : "border-inputText"} bg-inputBg py-1.5 pl-6 text-sm text-inputText placeholder:text-inputText ${
+            isPasswordValid ? "focus:border-red-500" : "focus:border-black"
+          } focus:outline-none`}
           placeholder="Password"
           aria-label="Password Field"
         />

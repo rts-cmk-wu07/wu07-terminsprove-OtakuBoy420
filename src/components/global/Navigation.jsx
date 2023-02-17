@@ -18,7 +18,7 @@ export default function Navigation() {
               <div
                 className="text-shadow z-10 flex cursor-pointer items-center gap-1"
                 onClick={() => {
-                  navigate(-1);
+                  navigate("/home");
                   setIsMenuOpen(false);
                 }}>
                 <IoTriangleSharp className="-rotate-90 text-base text-primary" />
@@ -26,14 +26,14 @@ export default function Navigation() {
               </div>
               {!isMenuOpen ? (
                 <HiMenuAlt3
-                  className="z-[99999] cursor-pointer text-[42px] text-gray"
+                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
                 />
               ) : (
                 <HiX
-                  className="z-[99999] cursor-pointer text-[42px] text-gray"
+                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
@@ -46,18 +46,18 @@ export default function Navigation() {
       ) : (
         <header className="flex items-center justify-between border-b-2 border-gray bg-white p-4 pb-1">
           <div className="flex w-full items-center justify-between">
-            <IoTriangleSharp className="text-[42px] text-gray" />
+            <IoTriangleSharp className="text-[42px] text-navIcon" />
             <h1 className="text-lg text-black">{navigationTitle ? navigationTitle : ""}</h1>
             {!isMenuOpen ? (
               <HiMenuAlt3
-                className="z-50 cursor-pointer text-[42px] text-gray"
+                className=" z-50 cursor-pointer text-[42px] text-navIcon"
                 onClick={() => {
                   setIsMenuOpen(!isMenuOpen);
                 }}
               />
             ) : (
               <HiX
-                className="z-[999] cursor-pointer text-[42px] text-gray"
+                className="z-[999] cursor-pointer text-[42px] text-navIcon"
                 onClick={() => {
                   setIsMenuOpen(!isMenuOpen);
                 }}

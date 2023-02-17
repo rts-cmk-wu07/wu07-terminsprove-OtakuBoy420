@@ -1,4 +1,4 @@
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 export default function LogOutButton() {

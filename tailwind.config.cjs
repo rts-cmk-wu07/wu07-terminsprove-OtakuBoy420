@@ -12,6 +12,7 @@ module.exports = {
         black: colors.black,
         inputBg: "#f1f0f5",
         inputText: "#777777",
+        navIcon: "#d8d8d8",
       },
       fontFamily: {
         sans: ["Arial", ...defaultTheme.fontFamily.sans],
@@ -26,7 +27,7 @@ module.exports = {
         primary: "0 0px 12px 0px #F4A88E",
       },
       backgroundImage: {
-        welcome: "url('./src/assets/images/welcome-1.jpg')",
+        welcome: "url('./assets/images/welcome-1.jpg')",
       },
       backgroundPosition: {
         centered: "60% center",

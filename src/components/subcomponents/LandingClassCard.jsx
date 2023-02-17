@@ -12,18 +12,13 @@ export default function LandingClassCard({ data, loading, error }) {
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
-
-  if (!loading) {
-    console.log(data);
-  }
-
   return (
     <>
       {loading ? (
         <div className="flex h-80 w-full items-center justify-center">
           <Loader size="lg" />
         </div>
-      ) : error ? (
+      ) : error || !data ? (
         <div className="m-4 mt-6 flex h-80 items-center gap-1 rounded-lg border-2 p-4">
           <HiOutlineExclamationCircle className="text-red-500" />
           <p className="text-base text-red-500"> {error?.message ? error?.message : "Error fetching data"}</p>

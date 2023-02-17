@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import ImagePlaceholder from "../global/ImagePlaceholder";
-import WhiteButton from "../buttons/WhiteButton";
-import axios from "axios";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
-import { toast } from "react-toastify";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import { motion } from "framer-motion";
 import { textVariant } from "../../utils/motion";
-export default function ClassDetailsHero({ classData, id }) {
+import SignUpButton from "../buttons/SignUpButton";
+export default function ClassDetailsHero({ classData, classId, userData, userId, token }) {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const { isAuthenticated } = useContext(IsAuthenticatedContext);
-  const token = document?.cookie?.split("=")[1]?.split(";")[0];
-  const userId = document?.cookie?.split("=")[2]?.split(";")[0];
+  const [userSavedDays, setUserSavedDays] = useState([]);
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
+  useEffect(() => {
+    if (!userData) return;
+    setUserSavedDays(userData?.classes?.map((userClassData) => userClassData?.classDay));
+  }, [userData]);
+
   useEffect(() => {
     if (!classData) return;
     if (classData?.users?.map((user) => user.id)?.includes(Number(userId))) {
@@ -30,32 +32,16 @@ export default function ClassDetailsHero({ classData, id }) {
           {classData?.className}
         </motion.h1>
         {isAuthenticated ? (
-          <WhiteButton
-            title={isSignedUp ? "Leave" : "Sign Up"}
-            className="h-fit"
-            onClick={() => {
-              if (isSignedUp) {
-                axios
-                  .delete(`${import.meta.env.VITE_API_URI}/users/${userId}/classes/${id}`, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } })
-                  .then((response) => {
-                    console.log(response);
-                  });
-                setIsSignedUp(false);
-                toast.success("You have successfully left this class!", {
-                  className: "toast-bottom-message",
-                });
-                return;
-              }
-              axios
-                .post(`${import.meta.env.VITE_API_URI}/users/${userId}/classes/${id}`, {}, { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } })
-                .then((response) => {
-                  console.log(response);
-                });
-              setIsSignedUp(true);
-              toast.success("You have successfully signed up for this class!", {
-                className: "toast-bottom-message",
-              });
-            }}
+          <SignUpButton
+            setUserSavedDays={setUserSavedDays}
+            userSavedDays={userSavedDays}
+            classData={classData}
+            userData={userData}
+            isSignedUp={isSignedUp}
+            setIsSignedUp={setIsSignedUp}
+            classId={classId}
+            userId={userId}
+            token={token}
           />
         ) : null}
       </div>

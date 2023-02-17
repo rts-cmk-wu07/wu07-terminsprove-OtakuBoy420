@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
+import IsAuthenticatedContext from "../contexts/IsAuthenticatedContext";
 
 import { toast } from "react-toastify";
 export default function useLogin() {

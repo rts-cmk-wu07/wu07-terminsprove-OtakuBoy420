@@ -2,8 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { navItems } from "../../constants";
-import { useContext, useEffect } from "react";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import { Fragment, useContext, useEffect } from "react";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import LogOutButton from "../buttons/LogOutButton";
 
 export default function NavigationMenu({ isMenuOpen, setIsMenuOpen }) {
@@ -26,17 +26,34 @@ export default function NavigationMenu({ isMenuOpen, setIsMenuOpen }) {
           className="absolute top-0 left-0 z-20 h-full w-full bg-white">
           <ul className="flex h-full flex-col items-center gap-4 px-4 py-24 text-lg">
             {navItems.map((item, index) => (
-              <li key={index}>
-                <NavLink
-                  onClick={() => {
-                    setIsMenuOpen(!isMenuOpen);
-                  }}
-                  to={item.path}
-                  end
-                  className={({ isActive }) => (isActive ? "underline underline-offset-4" : "")}>
-                  {item.name}
-                </NavLink>
-              </li>
+              <Fragment key={index}>
+                {/* to give the parent a key, we need to use the Fragment tag from react instead of <> */}
+                {!item.needsAuth ? (
+                  <li>
+                    <NavLink
+                      onClick={() => {
+                        setIsMenuOpen(!isMenuOpen);
+                      }}
+                      to={item.path}
+                      end
+                      className={({ isActive }) => (isActive ? "underline underline-offset-4" : "")}>
+                      {item.name}
+                    </NavLink>
+                  </li>
+                ) : isAuthenticated ? (
+                  <li>
+                    <NavLink
+                      onClick={() => {
+                        setIsMenuOpen(!isMenuOpen);
+                      }}
+                      to={item.path}
+                      end
+                      className={({ isActive }) => (isActive ? "underline underline-offset-4" : "")}>
+                      {item.name}
+                    </NavLink>
+                  </li>
+                ) : null}
+              </Fragment>
             ))}
             {isAuthenticated ? <LogOutButton /> : <LoginForm setIsMenuOpen={setIsMenuOpen} />}
           </ul>

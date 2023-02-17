@@ -33,6 +33,7 @@ Minimal Viable Product
 - Welcome screen
 - User can rate a class from 1-5
 - Animated routes
+- User can rate classes
 - Triangle icon in header filter by rating
 - The app should look either exactly like the design given or really close
 
@@ -46,7 +47,7 @@ React is a JavaScript library for building user interfaces. I chose to use React
 
 <br>
 
-## Libraries:
+## Important Libraries:
 
 ## TailwindCSS
 
