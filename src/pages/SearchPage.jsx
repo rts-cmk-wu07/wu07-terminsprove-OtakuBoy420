@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import SearchField from "../components/subcomponents/SearchField";
-import SearchResults from "../components/subcomponents/SearchResults";
+import SearchResults from "../components/pagecomponents/SearchResults";
 import NavigationTitleContext from "../contexts/NavigationTitleContext";
 import useAxios from "../hooks/useAxios";
 

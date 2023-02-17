@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import NavigationTitleContext from "../contexts/NavigationTitleContext";
 import LandingClassCard from "../components/subcomponents/LandingClassCard";
-import ClassSlider from "../components/subcomponents/ClassSlider";
+import ClassSliderList from "../components/subcomponents/ClassSliderList";
 import useAxios from "../hooks/useAxios";
 export default function HomePage() {
   const { setNavigationTitle } = useContext(NavigationTitleContext);
@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <section className="py-4">
       <LandingClassCard data={!loading && !error ? data?.filter((item) => item.id === randomNumber) : null} loading={loading} error={error} />
-      <ClassSlider data={data} loading={loading} error={error} pl heading="Classes for you" mt />
+      <ClassSliderList data={data} loading={loading} error={error} pl heading="Classes for you" mt />
     </section>
   );
 }

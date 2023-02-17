@@ -2,7 +2,7 @@ import Loader from "../global/Loader";
 import ClassSliderItem from "./ClassSliderItem";
 import { motion } from "framer-motion";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
-export default function ClassSlider({ data, loading, error, pl, heading, mt }) {
+export default function ClassSliderList({ data, loading, error, pl, heading, mt }) {
   return (
     <article
       className={`max-w-fit ${pl ? "pl-4" : ""}
