@@ -20,14 +20,14 @@ export default function Navigation() {
               <h1 className="text-lg text-black">Popular Classes</h1>
               {!isMenuOpen ? (
                 <HiMenuAlt3
-                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
+                  className="z-[100] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
                 />
               ) : (
                 <HiX
-                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
+                  className="z-[100] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
@@ -52,14 +52,14 @@ export default function Navigation() {
               </div>
               {!isMenuOpen ? (
                 <HiMenuAlt3
-                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
+                  className="z-[100] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
                 />
               ) : (
                 <HiX
-                  className="z-[99999] cursor-pointer text-[42px] text-navIcon"
+                  className="z-[100] cursor-pointer text-[42px] text-navIcon"
                   onClick={() => {
                     setIsMenuOpen(!isMenuOpen);
                   }}
