@@ -2,7 +2,9 @@
 
 <font size="6">Welcome to my trainer app repository! :)</font>
 <br />
-
+Navn: Oliver Zeymer
+Hold: WU 07
+Uddanelse: Webudvikler
 # Description
 
 This repository is a trainer mobile web-app that uses the [Trainer API](https://github.com/OtakuBoy420/trainer-api) as backend.
