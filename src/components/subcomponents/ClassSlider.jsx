@@ -25,10 +25,8 @@ export default function ClassSlider({ data, loading, error, pl, heading, mt }) {
       ) : (
         <div className="my-6 flex flex-col items-center gap-1 text-center">
           <HiOutlineExclamationCircle className="text-red-500" />
-          <div className="text-lg">
-            <p className="text-red-500">No classes found.</p>
-            <p>Try searching for something else</p>
-          </div>
+
+          <p className="text-lg text-red-500">Your search did not give any results. Try to search for something else</p>
         </div>
       )}
     </article>

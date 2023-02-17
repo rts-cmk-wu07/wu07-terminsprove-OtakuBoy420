@@ -1,6 +1,6 @@
 import Trainer from "./Trainer";
 import { AnimatePresence, motion } from "framer-motion";
-import { slideIn, textVariant } from "../../utils/motion";
+import { textVariant } from "../../utils/motion";
 export default function ClassDetailsContent({ classData, assetsData }) {
   return (
     <AnimatePresence>

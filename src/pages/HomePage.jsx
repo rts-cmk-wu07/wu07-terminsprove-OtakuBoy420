@@ -16,7 +16,7 @@ export default function HomePage() {
 
   return (
     <section className="py-4">
-      <LandingClassCard data={!loading && data?.filter((item) => item.id === randomNumber)} loading={loading} error={error} />
+      <LandingClassCard data={!loading && !error ? data?.filter((item) => item.id === randomNumber) : null} loading={loading} error={error} />
       <ClassSlider data={data} loading={loading} error={error} pl heading="Classes for you" mt />
     </section>
   );

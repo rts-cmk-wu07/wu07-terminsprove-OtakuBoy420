@@ -10,5 +10,6 @@ export const navItems = [
   {
     name: "My Schedule",
     path: "/schedule",
+    needsAuth: true,
   },
 ];

@@ -5,7 +5,7 @@ import HomePage from "../../pages/HomePage";
 import { useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import NotFoundPage from "../../pages/NotFoundPage";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import getCookie from "../../functions/getCookie";
 import ClassDetailsPage from "../../pages/ClassDetailsPage";
 import { AnimatePresence } from "framer-motion";

@@ -1,10 +1,10 @@
 import useAxios from "../../hooks/useAxios";
 import getCookie from "../../functions/getCookie";
 import Loader from "../global/Loader";
-import ScheduleClassItem from "./ScheduleClassItem";
+import ScheduleItem from "./ScheduleItem";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
-export default function ScheduleClassList() {
+export default function ScheduleList() {
   const navigate = useNavigate();
   const userId = getCookie("userId");
   const token = getCookie("token");
@@ -26,12 +26,23 @@ export default function ScheduleClassList() {
             To home
           </button>
         </div>
-      ) : (
+      ) : data?.classes?.length > 0 ? (
         <ul className="mt-6 flex flex-col">
           {data?.classes.map((classItem) => (
-            <ScheduleClassItem key={classItem?.id} classItem={classItem} />
+            <ScheduleItem key={classItem?.id} classItem={classItem} />
           ))}
         </ul>
+      ) : (
+        <div className="flex flex-col">
+          <p className="mt-6">You have no classes scheduled. Go to the home page to browse our classes!</p>
+          <button
+            className="mt-4 w-full rounded-md border-2 px-4 py-2 text-black"
+            onClick={() => {
+              navigate("/home");
+            }}>
+            To home
+          </button>
+        </div>
       )}
     </>
   );

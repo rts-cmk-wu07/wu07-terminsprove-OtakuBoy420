@@ -13,7 +13,7 @@ export default function SearchPage() {
     setNavigationTitle("Search");
   }, []);
   return (
-    <section className="mt-8 p-4">
+    <section className="mt-8 p-4 pr-0">
       <h1 className="text-xl">Search</h1>
       <SearchField searchValue={searchValue} setSearchValue={setSearchValue} />
       <SearchResults
