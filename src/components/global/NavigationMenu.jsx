@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { navItems } from "../../constants";
 import { Fragment, useContext, useEffect } from "react";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import LogOutButton from "../buttons/LogOutButton";
 
 export default function NavigationMenu({ isMenuOpen, setIsMenuOpen }) {

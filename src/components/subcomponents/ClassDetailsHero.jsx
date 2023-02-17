@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import ImagePlaceholder from "../global/ImagePlaceholder";
-import IsAuthenticatedContext from "../../contexts/isAuthenticatedContext";
+import IsAuthenticatedContext from "../../contexts/IsAuthenticatedContext";
 import { motion } from "framer-motion";
 import { textVariant } from "../../utils/motion";
 import SignUpButton from "../buttons/SignUpButton";
