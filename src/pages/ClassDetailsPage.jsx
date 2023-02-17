@@ -1,10 +1,10 @@
-import ClassDetailsHero from "../components/subcomponents/ClassDetailsHero";
+import ClassDetailsHero from "../components/pagecomponents/ClassDetailsHero";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../components/global/Loader";
 import NavigationTitleContext from "../contexts/NavigationTitleContext";
 import useAxios from "../hooks/useAxios";
-import ClassDetailsContent from "../components/subcomponents/ClassDetailsContent";
+import ClassDetailsContent from "../components/pagecomponents/ClassDetailsContent";
 import { HiOutlineExclamationCircle } from "@react-icons/all-files/hi/HiOutlineExclamationCircle";
 import getCookie from "../functions/getCookie";
 

@@ -18,7 +18,7 @@ export default function NavigationMenu({ isMenuOpen, setIsMenuOpen }) {
   return (
     <AnimatePresence>
       {isMenuOpen ? (
-        <motion.nav
+        <motion.div
           initial={{ y: "-100%" }}
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
@@ -57,7 +57,7 @@ export default function NavigationMenu({ isMenuOpen, setIsMenuOpen }) {
             ))}
             {isAuthenticated ? <LogOutButton /> : <LoginForm setIsMenuOpen={setIsMenuOpen} />}
           </ul>
-        </motion.nav>
+        </motion.div>
       ) : null}
     </AnimatePresence>
   );

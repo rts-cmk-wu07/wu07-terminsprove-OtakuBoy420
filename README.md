@@ -1,12 +1,14 @@
 # Trainer app
 
-Welcome to my trainer app repository! :)
+## Welcome to my trainer app repository! :)
+
+<br />
 
 # Description
 
 This repository is a trainer mobile web-app that uses the [Trainer API](https://github.com/OtakuBoy420/trainer-api) as backend.
-
-<br>
+The frontend is deployed with vercel at https://oliver-terminsprove.vercel.app/ and the backend is deployed with render at https://trainer-api-oliver.onrender.com/
+(API in deployment may load for a while)
 
 # Approach
 
@@ -14,7 +16,7 @@ This repository is a trainer mobile web-app that uses the [Trainer API](https://
 
 Minimal Viable Product
 
-- User can login and logout
+- User can log in and log out
 - User can see a list of classes
 - User can join and leave a class
 - If user isn't logged in, they can't see the schedule or join a class
@@ -29,11 +31,12 @@ Minimal Viable Product
 
 ## Nice to have
 
+- Meta tags and favicon
 - Design and animations should make the app feel alive and fun to use
+- Deployment
 - Welcome screen
 - User can rate a class from 1-5
 - Animated routes
-- User can rate classes
 - Triangle icon in header filter by rating
 - The app should look either exactly like the design given or really close
 
@@ -47,7 +50,7 @@ React is a JavaScript library for building user interfaces. I chose to use React
 
 <br>
 
-## Important Libraries:
+## Main Libraries:
 
 ## TailwindCSS
 

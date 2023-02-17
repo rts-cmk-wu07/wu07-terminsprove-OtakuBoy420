@@ -1,4 +1,4 @@
-import Trainer from "./Trainer";
+import Trainer from "../subcomponents/Trainer";
 import { AnimatePresence, motion } from "framer-motion";
 import { textVariant } from "../../utils/motion";
 export default function ClassDetailsContent({ classData, assetsData }) {
